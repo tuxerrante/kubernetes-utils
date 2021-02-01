@@ -1,0 +1,9 @@
+[submodule "ckad-crash-course"]
+	path = ckad-crash-course
+	url = https://github.com/tuxerrante/ckad-crash-course
+[submodule "CKA-practice-exercises"]
+	path = CKA-practice-exercises
+	url = https://github.com/tuxerrante/CKA-practice-exercises
+[submodule "ckad"]
+	path = ckad
+	url = https://github.com/tuxerrante/ckad
