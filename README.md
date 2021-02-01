@@ -1,7 +1,8 @@
 # kubernetes-utils
-collection of repos and scripts to simplify kubernetes administration
+This is a raw collection of repos and scripts to simplify kubernetes administration or learning.
 
-git clone --recursive https://github.com/chaconinc/MainProject
+This repo has submodules, so to clone it all use --recursive arg:  
+`git clone --recursive https://github.com/tuxerrante/kubernetes-utils`
 
 - https://github.com/tuxerrante/ckad-crash-course
 - https://github.com/tuxerrante/CKA-practice-exercises
