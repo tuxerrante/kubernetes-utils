@@ -7,3 +7,6 @@
 [submodule "ckad"]
 	path = ckad
 	url = https://github.com/tuxerrante/ckad
+[submodule "kubernetes_kong_api_management"]
+	path = kubernetes_kong_api_management
+	url = https://github.com/tuxerrante/kubernetes_kong_api_management
