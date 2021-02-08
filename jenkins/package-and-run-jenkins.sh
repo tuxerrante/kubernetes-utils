@@ -38,10 +38,11 @@ docker run -p 8080:8080 -p 50000:50000 \
 # Save the startup password to login as admin
 MAX_RETRIES=2
 counter=0
-while ! docker exec jenkins-master cat /var/jenkins_home/secrets/initialAdminPassword || $counter > $MAX_RETRIES
+while ! docker exec jenkins-master cat /var/jenkins_home/secrets/initialAdminPassword && $counter > $MAX_RETRIES
 do
     echo " > Waiting for Jenkins admin psw.. "
-    wait 2
+    ((counter += 1))
+    sleep 2
 done
 
 
