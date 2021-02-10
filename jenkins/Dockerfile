@@ -6,7 +6,9 @@ USER root
 RUN mkdir /var/log/jenkins \
    && chown -R jenkins:jenkins /var/log/jenkins \
    && mkdir /var/cache/jenkins \
-   && chown -R jenkins:jenkins /var/cache/jenkins
+   && chown -R jenkins:jenkins /var/cache/jenkins \
+   && useradd --no-create-home -G jenkins nginx \
+   && rm -rf /var/jenkins_home/war
 USER jenkins
 
 ENV JAVA_OPTS="-Xmx8192m"

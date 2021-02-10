@@ -1,20 +1,20 @@
 #!/bin/bash
 #====================================
 
-echo "> Creating jenkins volumes.."
+echo "=> Creating jenkins volumes.."
 docker volume create jenkins-log
 docker volume create jenkins-data
 
-echo "> Building Jenkins image.."
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+echo "=> Building Jenkins image in $DIR"
 docker build -t jenkins-master $DIR/.
 
 ###########################################################
 # Connect to a given network
-echo "> Creating a network for proxying jenkins"
+echo "=> Creating a network for proxying jenkins"
 network_result=$(docker network create --driver bridge jenkins-net 2>&1)
 if grep "already exists" <<< "$network_result"; then 
-    echo "> Network already created"
+    echo "=> Network already created"
 fi
 
 ###########################################################
@@ -26,7 +26,7 @@ fi
 # increases the number of possible connections
 # gives the container a name
 # uses only long time support jenkins releases (in Dockerfile)
-echo "> Run Jenkins container"
+echo "=> Run Jenkins container"
 docker run -p 8080:8080 -p 50000:50000 \
    -v jenkins-data:/var/jenkins_home \
    -v jenkins-log:/var/log/jenkins   \
@@ -38,13 +38,15 @@ docker run -p 8080:8080 -p 50000:50000 \
 # Save the startup password to login as admin
 MAX_RETRIES=2
 counter=0
-while ! docker exec jenkins-master cat /var/jenkins_home/secrets/initialAdminPassword && $counter > $MAX_RETRIES
-do
-    echo " > Waiting for Jenkins admin psw.. "
-    ((counter += 1))
-    sleep 2
+while ! docker exec jenkins-master cat /var/jenkins_home/secrets/initialAdminPassword; do
+    if [[ $counter -le $MAX_RETRIES ]]; then
+        echo "=> [#${counter}] Waiting for Jenkins admin psw.. "
+        ((counter += 1))
+        sleep 4
+    else
+        break
+    fi
 done
-
 
 ###########################################################
 # MONITORING
