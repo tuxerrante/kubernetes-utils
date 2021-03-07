@@ -18,8 +18,8 @@ spec:
         testing: "false"
 
     spec:
-#      nodeSelector:
-#        kubernetes.io/hostname: minikube
+      nodeSelector:
+        kubernetes.io/hostname: minikube
 
       containers:
       - image: gcr.io/google-containers/echoserver:1.10
@@ -42,5 +42,19 @@ spec:
               fieldRef:
                 fieldPath: status.podIP
 
-        resources: {}
-status: {}
+        resources:
+          limits:
+            memory: "50Mi"
+            cpu: "500m"
+          requests:
+            memory: "30Mi"
+            cpu: "100m"
+        
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
