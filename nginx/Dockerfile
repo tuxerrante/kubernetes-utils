@@ -1,4 +1,4 @@
-FROM nginx:1.18.0
+FROM nginx:1.19.9
 RUN  apt -y update && apt -y install vim procps
 # COPY nginx.conf /etc/nginx/nginx.conf
 COPY jenkins.conf /etc/nginx/conf.d/jenkins.conf
