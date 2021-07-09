@@ -1,4 +1,5 @@
-FROM nginx:1
+
+FROM nginx:mainline
 
 RUN  apt -y update && apt -y install vim procps
 # COPY nginx.conf /etc/nginx/nginx.conf
