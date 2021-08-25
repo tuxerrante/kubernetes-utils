@@ -19,4 +19,19 @@ This repo has submodules, so to clone it all use --recursive arg:
 - https://learning.oreilly.com/videos/certified-kubernetes-administrator
 - https://killer.sh/
 
+## Init commands to memorize
+`alias k=kubectl`
+`export do="-o yaml --dry-run=client"`  
 
+```
+$ vim ~/.vimrc
+set nu
+set ic
+set expandtab
+set shiftwidth=2
+set tabstop=2
+set list
+```
+
+`kubectl config set-context <context-of-question> --namespace=<namespace-of-question>`
+  
