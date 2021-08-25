@@ -13,5 +13,10 @@ This repo has submodules, so to clone it all use --recursive arg:
 ## Online best free trainings
 - https://learnk8s.io/troubleshooting-deployments
 - https://cloud.google.com/kubernetes-engine/docs/tutorials
-- https://kodekloud.com//courses/certified-kubernetes-administrator-with-practice-tests/lectures/9808161
+- https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9808161
+- https://github.com/kodekloudhub/certified-kubernetes-administrator-course
 - https://www.edx.org/course/introduction-to-kubernetes
+- https://learning.oreilly.com/videos/certified-kubernetes-administrator
+- https://killer.sh/
+
+
