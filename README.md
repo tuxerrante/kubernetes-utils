@@ -20,7 +20,7 @@ This repo has submodules, so to clone it all use --recursive arg:
 - https://killer.sh/
 
 ## Init commands to memorize
-`alias k=kubectl`
+`alias k=kubectl`  
 `export do="-o yaml --dry-run=client"`  
 
 ```
@@ -33,5 +33,5 @@ set tabstop=2
 set list
 ```
 
-`kubectl config set-context <context-of-question> --namespace=<namespace-of-question>`
+`kubectl config set-context <context-of-question> --namespace=<namespace-of-question>`  
   
