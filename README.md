@@ -22,6 +22,7 @@ This repo has submodules, so to clone it all use --recursive arg:
 ## Init commands to memorize
 `alias k=kubectl`  
 `export do="-o yaml --dry-run=client"`  
+`source <(kubectl completion bash)`  
 
 ```
 $ vim ~/.vimrc
