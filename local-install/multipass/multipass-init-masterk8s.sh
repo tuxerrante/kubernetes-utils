@@ -19,12 +19,13 @@ sudo rm -f /etc/resolv.conf
 sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 sudo systemctl restart systemd-resolved.service
 
+"""
 # Update your dns based on your laptop network
-# sudo tee /etc/resolv.conf <<EOF
-# nameserver 10.34.168.6
-# nameserver 8.8.8.8
-# EOF
-
+sudo tee /etc/resolv.conf <<EOF
+nameserver 10.34.168.6
+nameserver 8.8.8.8
+EOF
+"""
 sudo apt update
 sudo apt install -y apt-transport-https ca-certificates curl
 
