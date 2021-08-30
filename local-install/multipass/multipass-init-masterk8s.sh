@@ -7,17 +7,22 @@ nameserver 8.8.8.8
 EOF
 
 sudo apt update
+sudo apt install -y apt-transport-https ca-certificates curl
 
 #--- Install Docker ---
 curl -fsSL https://get.docker.com -o get-docker.sh \
-    sudo sh get-docker.sh \
-    sudo usermod $USER -aG docker
+    && sudo sh get-docker.sh \
+    && sudo groupadd docker \
+    && sudo usermod -aG docker $USER \
+    && newgrp docker \
+    && sudo chown "$USER":"$USER" /home/"$USER"/.docker -R \
+    && sudo chmod g+rwx "$HOME/.docker" -R
   
 #--- Add Repo to the list and install Kubeadm
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
-  echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && \
-  sudo apt-get update -q && \
-  sudo apt-get install -qy kubeadm
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg \
+  && echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list \
+  && sudo apt-get update  \
+  && sudo apt-get install -qy kubelet kubeadm kubectl
 
 sudo swapoff -a
 
