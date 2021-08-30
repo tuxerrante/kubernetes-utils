@@ -15,7 +15,8 @@ multipass launch --name worker-1-k8s --cpus 2 --mem 2048M --disk 5G --network
 
 Exec init commands
 ```
-multipass exec master-k8s
+multipass exec master-k8s -- bash -c "echo nameserver 10.34.168.6 | sudo tee /etc/resolv.conf  && curl -sO https://raw.githubusercontent.com/tuxerrante/kubernetes-utils/main/local-install/multipass/multipass-init-masterk8s.sh  && chmod +x multipass-init-masterk8s.sh  && ./multipass-init-masterk8s.sh"
+
 ```
 Not working:
   Get-Content .\multipass-init-masterk8s.sh | multipass transfer -v - master-k8s:$HOME/init-masterk8s.sh

@@ -9,8 +9,9 @@ EOF
 sudo apt update
 
 #--- Install Docker ---
-curl -sSL get.docker.com | sh && \
-  sudo usermod pi -aG docker
+curl -fsSL https://get.docker.com -o get-docker.sh \
+    sudo sh get-docker.sh \
+    sudo usermod $USER -aG docker
   
 #--- Add Repo to the list and install Kubeadm
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
