@@ -9,6 +9,8 @@ EOF
 sudo apt update
 sudo apt install -y apt-transport-https ca-certificates curl
 
+sudo apt-get remove docker docker-engine docker.io containerd runc
+
 #--- Install Docker ---
 curl -fsSL https://get.docker.com -o get-docker.sh \
     && sudo sh get-docker.sh \
