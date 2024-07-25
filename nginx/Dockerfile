@@ -1,4 +1,4 @@
-FROM nginx:stable
+FROM nginx:1.26.1-bookworm
 
 RUN  apt -y update && apt -y install vim procps
 # COPY nginx.conf /etc/nginx/nginx.conf
